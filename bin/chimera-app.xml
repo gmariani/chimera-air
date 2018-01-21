@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/3.1">
+	<id>com.coursevector.chimera</id>
+	<filename>chimera</filename>
+	<name>Course Vector .chimera</name>
+	
+	<versionNumber>1.2.0</versionNumber>         
+	<versionLabel>1.2.0</versionLabel>
+
+	<description>Visually displays how a file is parsed and helps reverse engineer file types.</description>
+	<copyright>Copyright (c) 2015 Course Vector</copyright>
+
+	<initialWindow>
+		<content>chimera.swf</content>
+	</initialWindow>
+
+	<installFolder>Course Vector</installFolder>
+	<programMenuFolder>Course Vector</programMenuFolder>
+
+	<icon>
+		<image16x16>assets/icons/chimera_16.png</image16x16>
+		<image32x32>assets/icons/chimera_32.png</image32x32>
+		<image48x48>assets/icons/chimera_48.png</image48x48>
+		<image128x128>assets/icons/chimera_128.png</image128x128>
+	</icon>
+</application>

@@ -1,0 +1,28 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+/*
+//------------------------------
+//  Application
+//------------------------------
+*/
+s|WindowedApplication {
+	backgroundColor: #666666;
+}
+
+/* AIR Part Test*/
+s|Window {
+	backgroundColor: #666666;
+}
+
+.code {
+	fontFamily:Consolas;
+	fontSize:16
+}
+
+@font-face {
+	src:url("assets/consola.ttf");
+	fontFamily:Consolas;
+	embedAsCFF: true;
+}

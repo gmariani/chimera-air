@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin 
+	minHeight="23"
+	minWidth="23"
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:mx="library://ns.adobe.com/flex/halo"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	>
+
+	<!--
+		 ////////////////////////////////////////////////////////////////////////////
+		 //
+		 //	Metadata
+		 //
+		 ////////////////////////////////////////////////////////////////////////////
+	-->
+
+	<fx:Metadata>
+		<![CDATA[
+     
+		[HostComponent("com.coursevector.flex.skin.IconButton")]
+    
+    	]]>
+	</fx:Metadata>
+
+
+	<!--
+		 ////////////////////////////////////////////////////////////////////////////
+		 //
+		 //	States
+		 //
+		 ////////////////////////////////////////////////////////////////////////////
+	-->
+
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+
+	<!--
+		 ////////////////////////////////////////////////////////////////////////////
+		 //
+		 //	Graphics
+		 //
+		 ////////////////////////////////////////////////////////////////////////////
+	-->
+
+	<!-- disabled -->
+	<s:Group left="0" right="0" top="0" bottom="0" includeIn="disabled">
+		<s:Path left="0" right="0" top="0" bottom="0" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor color="#FFFFFF" alpha="0.05"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="2" right="2" top="2" bottom="2" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor alpha="0.30"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="1" right="1" top="1" bottom="1" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor alpha="0.60"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="2" right="2" top="2" bottom="2" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor color="#FFFFFF" alpha="0.05"/>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+	
+	<!-- down -->
+	<s:Group left="0" right="0" top="0" bottom="0" includeIn="down">
+		<s:Path left="1" right="1" top="1" bottom="1" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor alpha="0.60"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Rect left="2" right="2" top="2" bottom="2" >
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.05"/>
+					<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		
+		<s:Path left="0" right="0" top="0" bottom="0" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor color="#FFFFFF" alpha="0.15"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="2" right="2" top="2" bottom="2" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.05"/>
+					<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0.01"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+	
+	<!-- over -->
+	<s:Group includeIn="over" width="100%" height="100%">
+		<s:Rect left="2" right="2" top="2" bottom="2" >
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.15"/>
+					<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0.05"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		
+		<s:Path left="1" right="1" top="1" bottom="1" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor alpha="0.60"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="0" right="0" top="0" bottom="0" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor color="#FFFFFF" alpha="0.10"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="2" right="2" top="2" bottom="2" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.08"/>
+					<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0.03"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+	
+	<!-- up -->
+	<s:Group includeIn="up" left="0" right="0" top="0" bottom="0" >
+		<s:Rect left="2" right="2" top="2" bottom="2" >
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.10"/>
+					<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		
+		<s:Path left="1" right="1" top="1" bottom="1" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor alpha="0.60"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="0" right="0" top="0" bottom="0" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:SolidColor color="#FFFFFF" alpha="0.10"/>
+			</s:fill>
+		</s:Path>
+		
+		<s:Path left="2" right="2" top="2" bottom="2" data="M 23 23 0 23 0 0 23 0 23 23 M 22 1 1 1 1 22 22 22 22 1">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.08"/>
+					<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0.03"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+
+	<!--
+		 ////////////////////////////////////////////////////////////////////////////
+		 //
+		 //	Label & Icons
+		 //
+		 ////////////////////////////////////////////////////////////////////////////
+	-->
+
+	<s:HGroup
+		paddingBottom="4"
+		paddingLeft="5"
+		paddingRight="5"
+		paddingTop="4"
+		gap="5"
+		verticalAlign="middle">
+		<s:BitmapImage id="iconElement" />
+		<s:Label 
+			id="labelDisplay"
+			textAlign="center"
+			verticalAlign="middle"
+			maxDisplayedLines="1"
+			horizontalCenter="0" verticalCenter="1"
+			/>
+	</s:HGroup>
+</s:SparkSkin>

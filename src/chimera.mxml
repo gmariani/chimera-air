@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" 
+					   xmlns:cv="com.coursevector.chimera.*" 
+					   xmlns:skin="com.coursevector.flex.skin.*" 
+					   showStatusBar="false" currentState="FileClosed" 
+					   creationComplete="init(event)" height="500" width="710" >
+	
+	<s:states>
+		<s:State name="FileClosed"/>
+		<s:State name="FileOpen"/>
+	</s:states>
+	
+	<fx:Style source="style/main.css" />
+	
+	<fx:Declarations>
+		<s:Fade id="fadeIn" alphaFrom="0" alphaTo="1" duration="500" target="{codeGroup}" />
+		<s:Fade id="fadeOut" alphaFrom="1" alphaTo="0" duration="500" target="{codeGroup}" />
+	</fx:Declarations>
+	
+	<fx:Script source="com/coursevector/chimera/Main.as" />
+	
+	<s:layout>
+		<s:VerticalLayout gap="0"/>
+	</s:layout>
+	
+	<s:Group width="100%" height="42">
+		<s:Group left="0" right="0" top="0" bottom="0" >
+			<s:Rect left="0" right="0" top="0" bottom="0" >
+				<s:fill>
+					<s:LinearGradient rotation="90">
+						<s:GradientEntry ratio="0" color="#FFFFFF" alpha="0.08"/>
+						<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0"/>
+					</s:LinearGradient>
+				</s:fill>
+				<s:stroke>
+					<s:SolidColorStroke alpha="0.60"/>
+				</s:stroke>
+			</s:Rect>
+			
+			<s:Rect left="1" right="1" top="1" bottom="1" >
+				<s:stroke>
+					<s:SolidColorStroke color="#FFFFFF" alpha="0.10"/>
+				</s:stroke>
+			</s:Rect>
+		</s:Group>
+		<s:HGroup verticalAlign="middle" gap="7" width="100%" height="100%" horizontalAlign="right" paddingLeft="10" paddingRight="10" paddingBottom="0" paddingTop="0">
+			<mx:ProgressBar 
+				label="Loading file..." 
+				labelPlacement="center" 
+				id="pbProgress" 
+				width="100%" 
+				visible="{processingFile}" 
+				hideEffect="{fadeOut}" 
+				showEffect="{fadeIn}" 
+				indeterminate="false" 
+				mode="manual" 
+				minimum="0" 
+				paddingLeft="0" 
+				paddingRight="10"/>
+			<s:DropDownList id="ddlPlugins" enabled="{!processingFile}" prompt="Select Plugin" dataProvider="{acPlugins}" change="setTimeout(highlight, 100, ddlPlugins.selectedItem.data);" enabled.FileClosed="false" enabled.FileOpen="true"/>
+			<s:Button id="btnOpen" enabled="{!processingFile}" label.FileClosed="Open..." click.FileClosed="onClickOpen()" click.FileOpen="onClickClose();" label.FileOpen="Close" />
+			<mx:Image id="btnAbout" source="assets/icons/helpIcon.png" click="onClickAbout()" toolTip="About .chimera" autoLoad="true"/>
+		</s:HGroup>
+	</s:Group>
+	
+	<s:Scroller id="scroller" height="100%" width="100%">
+		<s:HGroup id="codeGroup" 
+				  enabled.FileClosed="false" enabled.FileOpen="true" 
+				  gap="5" paddingTop="5" paddingLeft="5" paddingRight="5">
+			<s:VGroup>
+				<s:Label styleName="code" text="Address" paddingBottom="7" />
+				<s:Label 
+					id="lblAddress" 
+					bottom="0" right="0" left="0"
+					styleName="code" />
+			</s:VGroup>
+			
+			<s:VGroup>
+				<s:Label id="lblTitle" 
+						 styleName="code" 
+						 paddingLeft="5" paddingBottom="4"
+						 text="00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F"/>
+				<cv:CodeBytes id="cvBytes" enabled="{!processingFile}" />
+			</s:VGroup>
+			
+			<s:VGroup>
+				<s:Label styleName="code" text="Dump" paddingBottom="7" />
+				<s:VGroup id="grpDump">
+					<s:Label 
+						id="lblDump"
+						bottom="0" right="0" left="0"
+						styleName="code" />
+				</s:VGroup>
+			</s:VGroup>
+		</s:HGroup>
+	</s:Scroller>
+</s:WindowedApplication>

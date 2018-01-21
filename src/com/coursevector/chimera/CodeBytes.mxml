@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" 
+		  width="440" height="300" 
+		  gap="0" 
+		  paddingLeft="5" paddingTop="1" paddingRight="10" 
+		  left="0" right="0">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.coursevector.chimera.PseudoThread;
+			
+			import flash.events.Event;
+			import flash.events.ProgressEvent;
+			import flash.utils.ByteArray;
+			
+			import spark.components.Label;
+
+			public static var BINARY:String = 'binary';
+			public static var HEX:String = 'hex';
+			
+			protected var _data:ByteArray;
+			protected var _numColumns:int = 16;
+			protected var _numRows:int = 0;
+			protected var displayMode:String = HEX;
+			protected var thread:PseudoThread;
+			
+			protected var arrBytes:Array = [];
+			protected var strData:String;
+			
+			public function set data(value:ByteArray):void {
+				_data = value;
+				
+				redraw();
+				invalidateProperties();
+				invalidateSize();
+				invalidateDisplayList();
+			}
+			
+			public function get data():ByteArray {
+				return _data;
+			}
+			
+			public function set columns(value:int):void {
+				_numColumns = value;
+				redraw();
+				invalidateProperties();
+				invalidateSize();
+				invalidateDisplayList();
+			}
+			
+			public function get columns():int {
+				return _numColumns;
+			}
+			
+			public function get rows():int {
+				return _numRows;
+			}
+			
+			public function clear():void {
+				this.removeAllElements();
+				this.addElement(bytes);
+				bytes.text = '';
+				_numRows = 0;
+			}
+			
+			protected function redraw():void {
+				clear();
+				if (!_data) return;
+				
+				// Reset
+				strData = '';
+				arrBytes = [];
+				
+				// Draw bytes
+				thread = new PseudoThread(systemManager, drawByte, { curIndex: 0, bytes: _data });
+				thread.addEventListener("threadComplete", threadCompleteHandler, false, 0, true);
+			}
+			
+			protected function drawByte(obj:Object):Boolean {
+				var strBytes:String;
+				if (obj.curIndex < obj.bytes.length) {
+					strBytes = getByte(obj.bytes[obj.curIndex]);
+					if ((obj.curIndex + 1) % _numColumns == 0) {
+						strBytes += '\n';
+						_numRows++;
+					}
+				}
+				
+				arrBytes.push(strBytes);
+				//bytes.text += strBytes;
+
+				if (arrBytes.length > 2000 || obj.curIndex >= obj.bytes.length - 1) {
+					//trace('break at 1000');
+					strData += arrBytes.join('');
+					arrBytes = [];
+				}
+				
+				obj.curIndex++;
+				
+				// Update Stats
+				dispatchEvent(new ProgressEvent(ProgressEvent.PROGRESS, false, false, obj.curIndex, obj.bytes.length));
+				
+				return (obj.curIndex < obj.bytes.length);
+			}
+			
+			protected function threadCompleteHandler(event:Event):void {
+				PseudoThread(event.currentTarget).removeEventListener("threadComplete", threadCompleteHandler);
+				thread = null;
+				
+				bytes.text = strData;
+				
+				this.dispatchEvent(new Event(Event.COMPLETE));
+			}
+			
+			protected function getByte(byte:Number):String {
+				var len:int = displayMode == HEX ? 2 : 8;
+				var base:int = displayMode == HEX ? 16 : 2;
+				var str:String = byte.toString(base).toUpperCase();
+				while (str.length < len) str = '0' + str;
+				str += ' ';
+				
+				return str;
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Label id="bytes" styleName="code"
+			textAlign="left" verticalAlign="middle" paddingTop="3" paddingBottom="4" />
+</s:VGroup>
