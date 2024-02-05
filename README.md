@@ -5,13 +5,17 @@ Adobe AIR based file inspector. It can read in Flash Shared Objects, JPEGs and C
 ## Screenshots
 
 ![](/screenshots/no-file.png)
+
 _No file open_
 
 ![](/screenshots/read-file.png)
+
 _File opened_
 
 ![](/screenshots/read-plugins.png)
+
 _File reading plugins available_
 
 ![](/screenshots/about.png)
+
 _About Screen_
