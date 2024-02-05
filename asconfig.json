@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"output": "bin/chimera.swf",
+		"accessible": true,
+		"source-path": [
+			"src"
+		],
+		"library-path": [
+			"libs"
+		],
+		"theme": "${flexlib}/../samples/themes/spark_graphite"
+	},
+	"files": [
+		"src/chimera.mxml"
+	],
+	"application": "src/chimera-app.xml",
+	"copySourcePathAssets": true,
+	"additionalOptions": "-locale en_US -show-unused-type-selector-warnings=false"
+}
